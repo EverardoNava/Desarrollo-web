@@ -5,15 +5,23 @@
     --primario: #FFC107;
     --secundario: #0097A7;
     --gris: #757575;
+    --gris-claro: #DFE9F3;
 }
 
+/* Glovales*/
 html {
     font-size: 62.5%;
     /*Formato (html y body) para hacer que los estilos se adapten a la variedad de pantallas*/
     box-sizing: border-box;
     /*Evita que se altere el tamaño de la caja al agregar padding o border*/
+    scroll-snap-type: y mandatory;
 }
 
+/*Scroll snap*/
+.servicios, .navegacion-principal, .formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
 /**selecciona todos los elementos*/
 *,
 *:before,
@@ -26,48 +34,86 @@ body {
     font-size: 16px;
     /* 1rem = 10px*/
     font-family: 'Krub', sans-serif;
-}
-
-h1 {
-    font-size: 3.8rem;
-}
-h2 {
-    font-size: 2.8rem;
-}
-h3{
-    font-size: 1.8rem;
-}
-
-h1,h2,h3{
-    text-align: center;
-}
-
-
-.titulo span {
-    font-size: 2rem;
+    background-image: linear-gradient(to top, var(--gris-claro) 0%, var(--blanco) 100%);
 }
 
 .contenedor {
     max-width: 100rem;
     margin: 0 auto;
 }
-.boton{
+
+.boton {
     background-color: var(--secundario);
     color: var(--blanco);
     padding: 1rem 3rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
+    font-size: 2rem;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: .5rem;
     width: 90%;
     text-align: center;
+    border: none;
 }
-@media (min-width:780px) {
-    .boton{
+
+@media (min-width: 768px) {
+    .boton {
         width: auto;
     }
 }
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*Tipografia*/
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+/*Titulos*/
+
+.titulo span {
+    font-size: 2rem;
+}
+/*Utilidades*/
+.w-sm-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100{
+        width: auto;
+    }
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha{
+    justify-content: flex-end;
+}
+/*navegacion pirncipal*/
 .nav-bg {
     background-color: var(--secundario);
 }
@@ -99,12 +145,14 @@ h1,h2,h3{
     color: var(--oscuro);
 }
 
+/*Hero*/
 .hero {
     background-image: url(../img/hero.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 450px;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .contenido-hero {
@@ -126,7 +174,98 @@ h1,h2,h3{
     color: var(--blanco);
 }
 
-.hubicacion{
+.contenido-hero .hubicacion {
     display: flex;
     align-items: flex-end;
+}
+
+/*Servicios*/
+@media (min-width: 780px) {
+    .servicios {
+        display: grid;
+        /*grid-template-columns: 33.3% 33.3% 33.3%; primera forma de dividir en 3 columnas*/
+        /*grid-template-columns: 1fr 1fr 1fr; segunda forma dividiendo en fracciones*/
+        grid-template-columns: repeat(3, 1fr);
+        /*Tercera forma repitiendo la fraccion*/
+        column-gap: 1rem;
+    }
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p{
+    line-height: 2;
+    text-align: center;
+}
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/*Contacto*/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%);/*Utiliza el valor mas pequeño*/
+    margin: 0 auto;/*alinea elementos cuyo padre no es un display flex*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.formulario fieldset{
+    border: none;
+}
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+@media (min-width: 768px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+    /*Selecciona el n hijo de la clase*/
+    .campo:nth-child(3),.campo:nth-child(4){
+        /*hace que cubran de la columna 1 a la 3*/
+        grid-column: 1 / 3;
+    }
+}
+.campo{
+    margin-bottom: 1rem;
+}
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo textarea{
+    height: 20rem;
+}
+
+.input-text{
+    width:100%;
+    border:none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/*Footer*/
+.footer{
+    text-align: center;
 }
