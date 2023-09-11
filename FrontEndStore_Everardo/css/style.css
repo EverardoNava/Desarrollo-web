@@ -1,5 +1,5 @@
 :root {
-    --primario: #9c27b0;
+    --primario: #9C27B0;
     --primarioOscuro: #89119D;
     --secundario: #FFCE00;
     --secundarioOscuro: rgb(233, 287, 2);
@@ -7,6 +7,7 @@
     --negro: #000;
 
     --fuentePrincipal: 'Staatliches', cursive;
+    ;
 }
 
 html {
@@ -67,30 +68,97 @@ h2 {
 h3 {
     font-size: 2.4rem;
 }
+
 /* Header */
-.header{
+.header {
     display: flex;
     justify-content: center;
 }
+
 /* BEM */
-.header__logo{
+.header__logo {
     margin: 3rem 0;
 }
 
-/* Navegacion */
-.navegacion{
+/* Footer */
+.footer {
     background-color: var(--primarioOscuro);
     padding: 1rem 0;
-    display:flex;
+    margin-top: 3rem;
+}
+
+.footer__texto {
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+/* Navegacion */
+.navegacion {
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    display: flex;
     justify-content: center;
     /* Separacion de los elementos */
     gap: 2rem;
 }
-.navegacion__enlace{
+
+.navegacion__enlace {
     font-family: var(--fuentePrincipal);
     color: var(--blanco);
+    /* Separacion forma nueva */
     font-size: 3rem;
+    margin-right: 2rem;
 }
-.navegacion__enlace--activo,.navegacion__enlace:hover{
-    color:var(--secundario)
+
+/* Selecciona el ultimo elemento del tipo  
+.navegacion__enlace:last-of-type{
+    margin-right: 0;
+} !se hace lo mismo con el gap*/
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover {
+    color: var(--secundario)
+}
+
+/* Grid */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Productos */
+.producto {
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+}
+
+.producto__imagen {
+    width: 100%;
+}
+
+.producto__informacion {}
+
+.producto__nombre {
+    font-size: 4rem;
+}
+
+.producto__precio {
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+.producto__nombre, .producto__precio{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
 }
