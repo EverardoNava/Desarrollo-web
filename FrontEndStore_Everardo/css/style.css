@@ -267,6 +267,7 @@ h3 {
     padding: 2rem;
     transition: background-color .3s ease;
     grid-column: 1 / 3;
+    text-align: center;
 }
 
 .formulario__submit:hover {
