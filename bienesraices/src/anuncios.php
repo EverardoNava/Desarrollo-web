@@ -1,5 +1,6 @@
 <?php
-    include "../includes/templates/header.php";
+    require "../includes/funciones.php";
+    incluirTemplates("header");
 ?>
     <main class="contenedor">
         <h2>Casas y Depas en venta</h2>
@@ -201,5 +202,5 @@
     </main>
 
     <?php
-    include "../includes/templates/footer.php";
+    incluirTemplates("footer");
     ?>

@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <header class="header <?php echo $inicio ? "inicio" : "" ?>">
+    <header class="header <?php echo ($inicio) ? "inicio" : "" ?>">
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="../../src/index.php">
-                    <img src="../../build/img/logo.svg" alt="Logotipo de Bienes Raices">
+                    <img src="../../src/img/logo.svg" alt="Logotipo de Bienes Raices">
                 </a>
 
                 <div class="mobile-menu">
