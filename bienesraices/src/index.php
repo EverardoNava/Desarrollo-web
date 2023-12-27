@@ -8,21 +8,21 @@
 
         <div class="iconos-nosotros">
             <div class="icono">
-                <img src="../build/img/icono1.svg" alt="Icono seguridad" loading="lazy">
+                <img src="/build/img/icono1.svg" alt="Icono seguridad" loading="lazy">
                 <h3>Seguridad</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laudantium laborum animi quis nisi? Cum
                     aspernatur aut fuga. Molestiae, eius! Voluptatem harum praesentium facilis eaque eligendi placeat,
                     illum atque officiis.</p>
             </div>
             <div class="icono">
-                <img src="../build/img/icono2.svg" alt="Icono precio" loading="lazy">
+                <img src="/build/img/icono2.svg" alt="Icono precio" loading="lazy">
                 <h3>Precio</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laudantium laborum animi quis nisi? Cum
                     aspernatur aut fuga. Molestiae, eius! Voluptatem harum praesentium facilis eaque eligendi placeat,
                     illum atque officiis.</p>
             </div>
             <div class="icono">
-                <img src="../build/img/icono3.svg" alt="Icono tiempo" loading="lazy">
+                <img src="/build/img/icono3.svg" alt="Icono tiempo" loading="lazy">
                 <h3>Tiempo</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laudantium laborum animi quis nisi? Cum
                     aspernatur aut fuga. Molestiae, eius! Voluptatem harum praesentium facilis eaque eligendi placeat,
@@ -35,9 +35,9 @@
         <div class="contenedor-anuncios">
             <div class="anuncio">
                 <picture>
-                    <source src="../build/img/anuncio1.webp" type="image/webp">
-                    <source src="../build/img/anuncio1.jpg" type="image/jpeg">
-                    <img loading="lazy" src="../build/img/anuncio1.jpg" alt="anuncio">
+                    <source src="/build/img/anuncio1.webp" type="image/webp">
+                    <source src="/build/img/anuncio1.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio1.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -47,16 +47,16 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_wc.svg" alt="icono wc">
+                            <img class="icono" loading="lazy" src="/build/img/icono_wc.svg" alt="icono wc">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_estacionamiento.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_estacionamiento.svg"
                                 alt="icono estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_dormitorio.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_dormitorio.svg"
                                 alt="icono habitaciones">
                             <p>4</p>
                         </li>
@@ -68,9 +68,9 @@
             </div><!--.anuncio-->
             <div class="anuncio">
                 <picture>
-                    <source src="../build/img/anuncio2.webp" type="image/webp">
-                    <source src="../build/img/anuncio2.jpg" type="image/jpeg">
-                    <img loading="lazy" src="../build/img/anuncio2.jpg" alt="anuncio">
+                    <source src="/build/img/anuncio2.webp" type="image/webp">
+                    <source src="/build/img/anuncio2.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio2.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -80,16 +80,16 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_wc.svg" alt="icono wc">
+                            <img class="icono" loading="lazy" src="/build/img/icono_wc.svg" alt="icono wc">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_estacionamiento.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_estacionamiento.svg"
                                 alt="icono estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_dormitorio.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_dormitorio.svg"
                                 alt="icono habitaciones">
                             <p>4</p>
                         </li>
@@ -101,9 +101,9 @@
             </div><!--.anuncio-->
             <div class="anuncio">
                 <picture>
-                    <source src="../build/img/anuncio3.webp" type="image/webp">
-                    <source src="../build/img/anuncio3.jpg" type="image/jpeg">
-                    <img loading="lazy" src="../build/img/anuncio3.jpg" alt="anuncio">
+                    <source src="/build/img/anuncio3.webp" type="image/webp">
+                    <source src="/build/img/anuncio3.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio3.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -113,16 +113,16 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_wc.svg" alt="icono wc">
+                            <img class="icono" loading="lazy" src="/build/img/icono_wc.svg" alt="icono wc">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_estacionamiento.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_estacionamiento.svg"
                                 alt="icono estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="icono" loading="lazy" src="../build/img/icono_dormitorio.svg"
+                            <img class="icono" loading="lazy" src="/build/img/icono_dormitorio.svg"
                                 alt="icono habitaciones">
                             <p>4</p>
                         </li>
@@ -151,9 +151,9 @@
             <article class="entrada-blog">
                 <div class="imagen">
                     <picture>
-                        <source srcset="../build/img/blog1.webp" type="imegen/webp">
-                        <source srcset="../build/img/blog1.jpg" type="imegen/jpeg">
-                        <img loading="lazy" src="../build/img/blog1.jpg" alt="Texto entrada Blog">
+                        <source srcset="/build/img/blog1.webp" type="imegen/webp">
+                        <source srcset="/build/img/blog1.jpg" type="imegen/jpeg">
+                        <img loading="lazy" src="/build/img/blog1.jpg" alt="Texto entrada Blog">
                     </picture>
                 </div>
 
@@ -172,9 +172,9 @@
             <article class="entrada-blog">
                 <div class="imagen">
                     <picture>
-                        <source srcset="../build/img/blog2.webp" type="imegen/webp">
-                        <source srcset="../build/img/blog2.jpg" type="imegen/jpeg">
-                        <img loading="lazy" src="../build/img/blog2.jpg" alt="Texto entrada Blog">
+                        <source srcset="/build/img/blog2.webp" type="imegen/webp">
+                        <source srcset="/build/img/blog2.jpg" type="imegen/jpeg">
+                        <img loading="lazy" src="/build/img/blog2.jpg" alt="Texto entrada Blog">
                     </picture>
                 </div>
 

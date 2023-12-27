@@ -7,9 +7,9 @@
         <article class="entrada-blog">
             <div class="imagen">
                 <picture>
-                    <source srcset="../build/img/blog1.webp" type="imegen/webp">
-                    <source srcset="../build/img/blog1.jpg" type="imegen/jpeg">
-                    <img loading="lazy" src="../build/img/blog1.jpg" alt="Texto entrada Blog">
+                    <source srcset="/build/img/blog1.webp" type="imegen/webp">
+                    <source srcset="/build/img/blog1.jpg" type="imegen/jpeg">
+                    <img loading="lazy" src="/build/img/blog1.jpg" alt="Texto entrada Blog">
                 </picture>
             </div>
 
@@ -28,9 +28,9 @@
         <article class="entrada-blog">
             <div class="imagen">
                 <picture>
-                    <source srcset="../build/img/blog2.webp" type="imegen/webp">
-                    <source srcset="../build/img/blog2.jpg" type="imegen/jpeg">
-                    <img loading="lazy" src="../build/img/blog2.jpg" alt="Texto entrada Blog">
+                    <source srcset="/build/img/blog2.webp" type="imegen/webp">
+                    <source srcset="/build/img/blog2.jpg" type="imegen/jpeg">
+                    <img loading="lazy" src="/build/img/blog2.jpg" alt="Texto entrada Blog">
                 </picture>
             </div>
 
@@ -48,9 +48,9 @@
         <article class="entrada-blog">
             <div class="imagen">
                 <picture>
-                    <source srcset="../build/img/blog3.webp" type="imegen/webp">
-                    <source srcset="../build/img/blog3.jpg" type="imegen/jpeg">
-                    <img loading="lazy" src="../build/img/blog3.jpg" alt="Texto entrada Blog">
+                    <source srcset="/build/img/blog3.webp" type="imegen/webp">
+                    <source srcset="/build/img/blog3.jpg" type="imegen/jpeg">
+                    <img loading="lazy" src="/build/img/blog3.jpg" alt="Texto entrada Blog">
                 </picture>
             </div>
 
@@ -69,9 +69,9 @@
         <article class="entrada-blog">
             <div class="imagen">
                 <picture>
-                    <source srcset="../build/img/blog4.webp" type="imegen/webp">
-                    <source srcset="../build/img/blog4.jpg" type="imegen/jpeg">
-                    <img loading="lazy" src="../build/img/blog4.jpg" alt="Texto entrada Blog">
+                    <source srcset="/build/img/blog4.webp" type="imegen/webp">
+                    <source srcset="/build/img/blog4.jpg" type="imegen/jpeg">
+                    <img loading="lazy" src="/build/img/blog4.jpg" alt="Texto entrada Blog">
                 </picture>
             </div>
 

@@ -7,9 +7,9 @@
         <h1>Guia para la decoracion de tu hogar</h1>
 
         <picture>
-            <source srcset="../build/img/destacada2.webp" type="image/webp">
-            <source srcset="../build/img/destacada2.jpg" type="image/jpeg">
-            <img loading="lazy" src="../build/img/destacada2.jpg" alt="imagen de la prorpiedad">
+            <source srcset="/build/img/destacada2.webp" type="image/webp">
+            <source srcset="/build/img/destacada2.jpg" type="image/jpeg">
+            <img loading="lazy" src="/build/img/destacada2.jpg" alt="imagen de la prorpiedad">
         </picture>
 
         <p class="informacion-meta">Escrito el: <span>12/12/2023</span> por: <span>Admin</span></p>
