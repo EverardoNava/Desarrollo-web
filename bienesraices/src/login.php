@@ -7,9 +7,6 @@ $db = conectarDB();
 $errores = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // echo "<pre>";
-    // var_dump($_POST);
-    // echo "</pre>";
 
     $email = mysqli_real_escape_string($db, filter_var($_POST["email"], FILTER_VALIDATE_EMAIL));
 
@@ -36,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Verificar si el password es correcto o no
             $auth = password_verify($password,$usuario["password"]);
 
-            if(-$auth){
+            if($auth){
                 // El usuario esta autenticado
                 session_start();
 
@@ -44,12 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION["usuario"] = $usuario["email"];
                 $_SESSION["login"] = true;
                 
+                header("Location: /admin");
 
             }else{
                 $errores[] = "el password es incorrecto";
             }
-
-            var_dump($auth);
 
         }else{
             $errores[] = "El usuario no existe";

@@ -1,11 +1,10 @@
 <?php
-session_start();
-
-$auth = $_SESSION["login"];
-
+require "../includes/funciones.php";
+$auth = estaAutenticado();
 if(!$auth){
-  header("Location: /");  
+    header("Location:/");
 }
+
 //Importar la conexion
 require "../includes/config/database.php";
 $db = conectarDB();
@@ -43,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 //Incluye un template
-require "../includes/funciones.php";
 incluirTemplates("header");
 ?>
 
