@@ -1,6 +1,13 @@
 <?php
+require "../../includes/app.php";
+
+use App\Propiedad;
+use Intervention\Image\ImageManagerStatic as Image;
+
+estaAutenticado();
+
+
 //Base de datos
-require "../../includes/config/database.php";
 $db = conectarDB();
 
 //consultar para obtener los vendedores
@@ -9,7 +16,7 @@ $consulta = "SELECT * FROM vendedores";
 $resultado = mysqli_query($db, $consulta);
 
 // Arreglo con mensajes de errores
-$errores = [];
+$errores = Propiedad::getErrores();
 
 $titulo = "";
 $precio = "";
@@ -24,90 +31,37 @@ $creado = date("Y/m/d");
 //Ejecutar el codigo despues de que el usuario encia el formulario
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    // echo "<pre>";
-    // var_dump($_POST);
-    // echo "</pre>";
+    //Crea una nueva instancia
+    $propiedad = new Propiedad($_POST);
 
-     echo "<pre>";
-     var_dump($_FILES);
-     echo "</pre>";
+    //Generar un nombre unico
+    $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
-
-    $titulo = mysqli_real_escape_string($db, $_POST["titulo"]);
-    $precio = mysqli_real_escape_string($db, $_POST["precio"]);
-    $descripcion = mysqli_real_escape_string($db, $_POST["descripcion"]);
-    $habitaciones = mysqli_real_escape_string($db, $_POST["habitaciones"]);
-    $wc = mysqli_real_escape_string($db, $_POST["wc"]);
-    $estacionamiento = mysqli_real_escape_string($db, $_POST["estacionamiento"]);
-    $vendedorId = mysqli_real_escape_string($db, $_POST["vendedor"]);
-    //Asignar files hacia una variable
-    $imagen = $_FILES["imagen"];
+    //Setear la imagen
+    //Realiza un resize a la imagen con intervention
+    if ($_FILES["imagen"]["tmp_name"]) {
+        $image = Image::make($_FILES["imagen"]["tmp_name"])->fit(800, 600);
+        $propiedad->setImagen($nombreImagen);
+    }
+    //Validar
+    $errores = $propiedad->validar();
 
 
-    if (!$titulo) {
-        $errores[] = "Debes añadir un titulo";
-    }
-    if (!$precio) {
-        $errores[] = "El precio es obligatorio";
-    }
-    if (strlen($descripcion) < 50) {
-        $errores[] = "La descripcion es obligaroria y debe tener almenos 50 caracteres";
-    }
-    if (!$habitaciones) {
-        $errores[] = "El numero de habitaciones es obligatorio";
-    }
-    if (!$wc) {
-        $errores[] = "El numero de baños es obligatorio";
-    }
-    if (!$estacionamiento) {
-        $errores[] = "El numero de lugares de estacionamiento es obligatorio";
-    }
-    if (!$vendedorId) {
-        $errores[] = "Elija un vendedor";
-    }
-    if (!$imagen["name"] || $imagen["error"]) {
-        $errores[] = "La imagen es obligatoria";
-    }
-
-    //Validar por tamaño (100Mb maximo)
-    $medida = 1000 * 1000;
-
-    if ($imagen["size"] > $medida) {
-        $errores[] = "La imagen es muy pesada";
-    }
-
-
-    // echo "<pre>";
-    // var_dump($errores);
-    // echo "</pre>";
 
     //Revisar que el array de errores este vacio
     if (empty($errores)) {
-
-        /*Subida de archivos*/
-
-        /* Crear carpeta */
-        $carpetaImagenes = "../../imagenes/";
-
-        if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes);
+        //Crea la carpeta para subir imagenes
+        if (!is_dir(CARPETA_IMAGENES)) {
+            mkdir(CARPETA_IMAGENES);
         }
 
-        //Generar un nombre unico
-        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+        //Guarda la imagen en el servidor
+        $image->save(CARPETA_IMAGENES . $nombreImagen);
 
+        //Guarda en la base de datos
+        $resultado = $propiedad->guardar();
 
-        // Subir la imagen
-        move_uploaded_file($imagen["tmp_name"], $carpetaImagenes .  $nombreImagen);
-
-
-        //insertar en la base de datos
-        $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) 
-        VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado',  '$vendedorId')";
-        //echo $query;
-
-        $resultado = mysqli_query($db, $query);
-
+        //Mensaje de exito o error
         if ($resultado) {
             // Redireccionar al usuario
             header("location: /admin?Resultado=1");
@@ -115,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 }
 
-require "../../includes/funciones.php";
 incluirTemplates("header");
 ?>
 
@@ -163,7 +116,7 @@ incluirTemplates("header");
 
         <fieldset>
             <legend>Vendedor</legend>
-            <select name="vendedor">
+            <select name="vendedorId">
                 <option value="" disabled selected>-- Seleccione --</option>
                 <?php while ($vendedor = mysqli_fetch_assoc($resultado)) : ?>
                     <option <?php echo $vendedorId === $vendedor["id"] ? "selected " : ""; ?> value="<?php echo $vendedor["id"]; ?>"><?php echo $vendedor["nombre"] . " " . $vendedor["apellido"]; ?></option>

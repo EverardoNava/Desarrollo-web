@@ -1,6 +1,5 @@
 <?php
 // Importar conexion
-require __DIR__ . "/../config/database.php";
 $db = conectarDB();
 
 //Consultar

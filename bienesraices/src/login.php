@@ -1,5 +1,5 @@
 <?php
-require "../includes/config/database.php";
+require "../includes/app.php";
 $db = conectarDB();
 
 //Autenticar el usuario
@@ -12,42 +12,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $password = mysqli_real_escape_string($db, $_POST["password"]);
 
-    if(!$email){
+    if (!$email) {
         $errores[] = "El email es obligatorio o no es valido";
     }
-    if(!$password){
+    if (!$password) {
         $errores[] = "El password es obligatorio";
     }
 
-    if(empty($errores)){
+    if (empty($errores)) {
         // Revisar si el usuario existe
 
         $query = "SELECT * FROM usuarios WHERE email = '{$email}'";
         $resultado = mysqli_query($db, $query);
 
-        
-        if($resultado->num_rows){
+
+        if ($resultado->num_rows) {
             // Revisar si el password es correcto
             $usuario = mysqli_fetch_assoc($resultado);
-            
-            // Verificar si el password es correcto o no
-            $auth = password_verify($password,$usuario["password"]);
 
-            if($auth){
+            // Verificar si el password es correcto o no
+            $auth = password_verify($password, $usuario["password"]);
+
+            if ($auth) {
                 // El usuario esta autenticado
                 session_start();
 
                 // Llenar el arreglo de la sesion
                 $_SESSION["usuario"] = $usuario["email"];
                 $_SESSION["login"] = true;
-                
-                header("Location: /admin");
 
-            }else{
+                header("Location: /admin");
+            } else {
                 $errores[] = "el password es incorrecto";
             }
-
-        }else{
+        } else {
             $errores[] = "El usuario no existe";
         }
     }
@@ -55,14 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 //Incluye el header
-require "../includes/funciones.php";
 incluirTemplates("header");
 ?>
 
 <main class="contenedor seccion contenido-centrado">
     <h1>Iniciar Sesion</h1>
 
-    <?php foreach ($errores as $error): ?>
+    <?php foreach ($errores as $error) : ?>
         <div class="alerta error">
             <?php echo $error ?>
         </div>
