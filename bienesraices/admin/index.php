@@ -16,20 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($id) {
 
-        //Elimina el archivo
-        $query = "SELECT imagen FROM propiedades WHERE id = {$id}";
-        $resultado = mysqli_query($db, $query);
-        $propiedad = mysqli_fetch_assoc($resultado);
+        $propiedad = Propiedad::find($id);
 
-        unlink("../imagenes/" . $propiedad["imagen"]);
-
-        // Elimina la propiedad
-        $query = "DELETE FROM propiedades WHERE id = {$id}";
-        $resultado = mysqli_query($db, $query);
-
-        if ($resultado) {
-            header('Location: /admin?resultado=3');
-        }
+        $propiedad->eliminar();
+        
     }
 }
 
@@ -46,7 +36,7 @@ incluirTemplates("header");
     <?php elseif (intval($resultado) === 3) : ?>
         <p class="alerta exito"> Anuncio Eliminado Correctamente</p>
     <?php endif; ?>
-    <a href="/admin/propiedades/crear.php" class="bptpn boton-verde">Nueva propiedad</a>
+    <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva propiedad</a>
 
     <table class="propiedades">
         <thead>
