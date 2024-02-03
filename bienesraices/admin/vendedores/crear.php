@@ -23,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 }
 
-if (empty($errores)) {
-}
 
 incluirTemplates("header");
 ?>

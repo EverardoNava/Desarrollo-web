@@ -27,13 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $vendedor->sincronizar($args);
 
     //Validacion
-    $errores = $Vendedor->validar();
+    $errores = $vendedor->validar();
 
     if(empty($errores)){
         $vendedor->guardar();
     }
-
-    
 }
 
 if (empty($errores)) {
