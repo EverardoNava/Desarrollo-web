@@ -53,23 +53,66 @@ class Usuario extends ActiveRecord
         return self::$alertas;
     }
 
+    public function validarLogin()
+    {
+        if (!$this->email) {
+            self::$alertas["error"][] = "El email es obligatorio";
+        }
+        if (!$this->password) {
+            self::$alertas["error"][] = "El password es obligatorio";
+        }
+        return self::$alertas;
+    }
+
+    public function validarEmail()
+    {
+        if (!$this->email) {
+            self::$alertas["error"][] = "El email es obligatorio";
+        }
+        return self::$alertas;
+    }
+
+    public function validarPassword()
+    {
+        if (!$this->password) {
+            self::$alertas["error"][] = "El password es obligatorio";
+        }
+        if (strlen($this->password < 6)) {
+            self::$alertas["error"][] = "El password debe tener almenos 6 caracteres";
+        }
+        return self::$alertas;
+    }
+
     //Revisa si el usuario ya existe
-    public function existeUsiario(){
+    public function existeUsiario()
+    {
         $query = "SELECT * FROM " . self::$tabla . " WHERE email = '" . $this->email . "' LIMIT 1";
 
         $resultado = self::$db->query($query);
 
-        if($resultado->num_rows){
+        if ($resultado->num_rows) {
             self::$alertas["error"][] = "El usuario ya esta registrado";
         }
 
         return $resultado;
     }
 
-    public function hashPassword(){
+    public function hashPassword()
+    {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
-    public function crearToken(){
+    public function crearToken()
+    {
         $this->token = uniqid();
+    }
+
+    public function comprobarPasswordAndVerificado($password)
+    {
+        $resultado = password_verify($password, $this->password);
+        if (!$resultado || !$this->confirmado) {
+            self::$alertas["error"][] = "Password incorrrecto o tu cuenta no ha sido confirmada";
+        } else {
+            return true;
+        }
     }
 }
